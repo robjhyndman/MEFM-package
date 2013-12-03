@@ -12,4 +12,3 @@ Description: This package includes a set of tools for electricity demand model e
 License: GPL version 2 or newer
 LazyData: yes
 LazyLoad: yes
-x
