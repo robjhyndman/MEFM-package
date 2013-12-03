@@ -1,0 +1,15 @@
+Package: MEFMLT
+Type: Package
+Title: Monash Electricity Forecasting Model -- Long-term peak electricity demand forecsating
+Version: 1.0
+Date: 2013-10-15
+Author: Rob J. Hyndman <Rob.Hyndman@monash.edu>, Shu Fan <Shu.Fan@monash.edu>
+Maintainer: Shu Fan <Shu.Fan@monash.edu>
+Depends: R(>= 2.14.0), forecast, splines, monash
+Description: This package includes a set of tools for electricity demand model estimation, temperature simulation and long-term electricity demand forecasting.
+			The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations;
+			seasonal demographical and economical data; dates of public holidays. The formats of the required data are described in the help file.
+License: GPL version 2 or newer
+LazyData: yes
+LazyLoad: yes
+x
