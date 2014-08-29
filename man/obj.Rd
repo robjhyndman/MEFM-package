@@ -2,10 +2,10 @@
 \alias{obj}
 \docType{data}
 \title{
-Historical data for half-hourly demand, temperature and holidays
+Historical data for model estimation
 }
 \description{
-Historical data for South Australia, including half-hourly demand, temperatures from 2 locations, and dates of holidays
+Historical data of South Australia
 }
 \usage{data(obj)}
 \format{
@@ -66,7 +66,7 @@ Historical data for South Australia, including half-hourly demand, temperatures 
   }
 }
 \details{
-%%  ~~ If necessary, more details than the __description__ above ~~
+Historical data for South Australia, including half-hourly demand, temperatures from 2 locations, weekday, weekend, and holiday dates.
 }
 \source{
 http://www.aemo.com.au/Electricity/Data/Price-and-Demand/Aggregated-Price-and-Demand-Data-Files
@@ -76,6 +76,5 @@ R. J. Hyndman and S. Fan, "Density Forecasting for Long-term Peak Electricity De
 }
 \examples{
 data(obj)
-## maybe str(obj) ; plot(obj) ...
 }
 \keyword{datasets}

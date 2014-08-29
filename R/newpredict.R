@@ -1,4 +1,5 @@
-newpredict <- function(model,hdata,blocklength,allperiods=TRUE,delta,periods=48)
+newpredict <-
+function(model,hdata,blocklength,allperiods=TRUE,delta,periods=48)
 {
 	# check if there is the second temperature sites
 	temp_sites = 1

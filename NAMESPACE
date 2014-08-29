@@ -1,7 +1,7 @@
 
 import()
 
-export(demand.model,simulate.ddemand,simulate.demand)
+export(demand_model,simulate_ddemand,simulate_demand)
 
 
 

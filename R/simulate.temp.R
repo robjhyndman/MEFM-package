@@ -47,8 +47,8 @@ function(x,y,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
 
 	# Return result as a time series
 	if (temp_sites == 1)
-		newtemp <- ts(data.frame(temp1=newtemp[1:n,]),s=1,f=seasondays*periods)
+		newtemp <- ts(data.frame(temp1=newtemp[1:n,]),start=1,frequency=seasondays*periods)
 	else
-		newtemp <- ts(newtemp[1:n,],s=1,f=seasondays*periods)
+		newtemp <- ts(newtemp[1:n,],start=1,frequency=seasondays*periods)
 	return(newtemp)
 }

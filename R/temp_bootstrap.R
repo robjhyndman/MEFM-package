@@ -65,8 +65,7 @@ function(x,m,delta=5,periods=48)
 	newindex <- newindex[!is.na(newindex)]
 	if(length(newindex) >= n)     #n <- nrow(x)
 		newindex <- newindex[1:n]
-	else
-	{
+	else{
 		warning("Insufficient data generated")
 		n <- length(newindex)
 	}
