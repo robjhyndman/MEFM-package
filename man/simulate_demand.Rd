@@ -14,7 +14,7 @@ simulate_demand(sim, afcast, nyears = length(sim$hhfit)/seasondays/periods, peri
 The simulated half-hourly demand (normalized against seasonal average demand)
 }
   \item{afcast}{
-The demograpgic and economic forecasts for the next season
+The demographic and economic forecasts for the next season
 }
   \item{nyears}{
 The length of years of simulation
