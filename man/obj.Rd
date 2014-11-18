@@ -1,5 +1,5 @@
-\name{obj}
-\alias{obj}
+\name{sa}
+\alias{sa}
 \docType{data}
 \title{
 Historical data for model estimation
@@ -7,7 +7,6 @@ Historical data for model estimation
 \description{
 Historical data of South Australia
 }
-\usage{data(obj)}
 \format{
   A data frame with 116880 observations on the following 52 variables.
   \describe{
@@ -69,12 +68,12 @@ Historical data of South Australia
 Historical data for South Australia, including half-hourly demand, temperatures from 2 locations, weekday, weekend, and holiday dates.
 }
 \source{
-http://www.aemo.com.au/Electricity/Data/Price-and-Demand/Aggregated-Price-and-Demand-Data-Files
+\url{http://www.aemo.com.au/Electricity/Data/Price-and-Demand/Aggregated-Price-and-Demand-Data-Files}
 }
 \references{
-R. J. Hyndman and S. Fan, "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, Vol. 25, No.2, pp. 1142--1153, 2010
+R. J. Hyndman and S. Fan (2010) "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, 25(2), 1142--1153.
 }
 \examples{
-data(obj)
+plot(ts(sa[,"demand"],freq=48*365,start=c(2000,7)))
 }
 \keyword{datasets}

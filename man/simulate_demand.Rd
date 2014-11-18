@@ -32,26 +32,26 @@ demographic & economic forecasts (to be provided by the user)
 \item{annmax}{The forecasted seasonal maximum demand}
 }
 \references{
-R. J. Hyndman and S. Fan, "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, Vol. 25, No.2, pp. 1142--1153, 2010
+R. J. Hyndman and S. Fan (2010) "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, 25(2), 1142--1153.
 }
 \author{
-R. J. Hyndman and S. Fan
+Rob J. Hyndman and Shu Fan
 }
 \seealso{
-\code{\link{demand_model}}
+\code{\link{demand_model}}, 
 \code{\link{simulate_ddemand}}
 }
 \examples{
 \dontrun{
 # seasonal economic and weather forecast, to be given by user
-afcast = data.frame(pop=1694,gsp=22573,resiprice=34.65,ddays=642)
+afcast <- data.frame(pop=1694,gsp=22573,resiprice=34.65,ddays=642)
 demand <- simulate_demand(simdemand,afcast,nyears=length(simdemand$hhfit)/seasondays/48)
 # illustrate the results
 tmp <- density(demand$annmax,bw="SJ",na.rm=TRUE)
-xlim=range(tmp$x)
+xlim <- range(tmp$x)
 ymax <- max(tmp$y[tmp$x > xlim[1]]) + 0.1
-main <- "Density of seasonal maximum demand"
-plot(tmp,main=main,xlab="Demand",xlim=xlim,ylim=c(0,ymax))
+plot(tmp, main="Density of seasonal maximum demand", xlab="Demand", 
+  ylim=c(0,ymax), xlim=xlim)
 }
 }
 \keyword{Electricity demand model}

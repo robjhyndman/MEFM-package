@@ -1,27 +1,27 @@
-\name{obj.econ}
-\alias{obj.econ}
+\name{sa.econ}
+\alias{sa.econ}
 \docType{data}
 \title{
-Historical demographic & economic data
+Historical demographic & economic data for South Australia
 }
 \description{
-Seasonal historical demographic & economic data for South Australia
+Annual data for South Australia including population, GSP, residential electricity price, total electricity price and cooling/heating degree days 
 }
-\format{
-  The format is:
- mts [1:14, 1:6] 1503 1509 1518 1528 1538 ...
- - attr(*, "dimnames")=List of 2
-  ..$ : NULL
-  ..$ : chr [1:6] "pop" "gsp" "resiprice" "totalprice" ...
- - attr(*, "tsp")= num [1:3] 2000 2013 1
- - attr(*, "class")= chr [1:2] "mts" "ts"
-}
-\details{
-Seasonal historical demographic & economic data, incluing population, GSP, residential electricity price, total electricity price and cooling/heating degree days 
-}
+\format{ A multivariate time series with the following columns:
+\describe{
+\item{pop}{State population (thousands of people)}
+\item{gsp}{Gross State Product chain volume estimate (millions of dollars) ?????}
+\item{resiprice}{Residential price index (cents per kWh)}
+\item{totalprice}{Total price (cents per kWh)}
+\item{anndemand}{Annual electricity demand (GW).}
+\item{ddays}{Cooling degree days with a threshold of 18.5 degrees Celsius.}
+}}
+
 \references{
-R. J. Hyndman and S. Fan, "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, Vol. 25, No.2, pp. 1142--1153, 2010
+R. J. Hyndman and S. Fan (2010) "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, 25(2), 1142--1153.
 }
+
 \examples{
+  plot(sa.econ)
 }
 \keyword{datasets}

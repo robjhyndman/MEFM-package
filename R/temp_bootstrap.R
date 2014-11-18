@@ -1,5 +1,4 @@
-temp_bootstrap <-
-function(x,m,delta=5,periods=48)
+temp_bootstrap <- function(x,m,delta=5,periods=48)
 {
 	x <- as.matrix(x)
 	n <- nrow(x)

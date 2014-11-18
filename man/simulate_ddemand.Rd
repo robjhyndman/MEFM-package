@@ -38,20 +38,20 @@ An object of class \code{simdemand}, basically a list including elements
 \item{a}{Seasonal model}
 }
 \references{
-R. J. Hyndman and S. Fan, "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, Vol. 25, No.2, pp. 1142--1153, 2010
+R. J. Hyndman and S. Fan (2010) "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, 25(2), 1142--1153.
 }
 \author{
-R. J. Hyndman and S. Fan
+Rob J Hyndman and Shu Fan
 }
 \seealso{
-\code{\link{demand_model}}
-\code{\link{simulate_demand}}
-\code{\link{obj}}
+\code{\link{demand_model}},
+\code{\link{simulate_demand}},
+\code{\link{sa}}
 }
 \examples{
 \dontrun{
 years_simu <- 1050
-simdemand <- simulate_ddemand(obj.model, obj, simyears=years_simu, delta=5)
+simdemand <- simulate_ddemand(sa.model, sa, simyears=years_simu, delta=5)
 }
 }
 \keyword{Electricity demand model}
