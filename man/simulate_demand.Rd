@@ -39,21 +39,9 @@ Rob J. Hyndman and Shu Fan
 }
 \seealso{
 \code{\link{demand_model}}, 
-\code{\link{simulate_ddemand}}
+\code{\link{simulate_ddemand}},
+\code{\link{MEFMLT-package}} for examples.
 }
-\examples{
-\dontrun{
-# seasonal economic and weather forecast, to be given by user
-afcast <- data.frame(pop=1694,gsp=22573,resiprice=34.65,ddays=642)
-demand <- simulate_demand(simdemand,afcast,nyears=length(simdemand$hhfit)/seasondays/48)
-# illustrate the results
-tmp <- density(demand$annmax,bw="SJ",na.rm=TRUE)
-xlim <- range(tmp$x)
-ymax <- max(tmp$y[tmp$x > xlim[1]]) + 0.1
-plot(tmp, main="Density of seasonal maximum demand", xlab="Demand", 
-  ylim=c(0,ymax), xlim=xlim)
-}
-}
+
 \keyword{Electricity demand model}
 \keyword{Forecast}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -46,14 +46,9 @@ Rob J Hyndman and Shu Fan
 \seealso{
 \code{\link{demand_model}},
 \code{\link{simulate_demand}},
-\code{\link{sa}}
+\code{\link{sa}},
+\code{\link{MEFMLT-package}} for examples.
 }
-\examples{
-\dontrun{
-years_simu <- 1050
-simdemand <- simulate_ddemand(sa.model, sa, simyears=years_simu, delta=5)
-}
-}
+
 \keyword{Electricity demand model}
 \keyword{Temperature simulate}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

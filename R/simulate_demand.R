@@ -1,5 +1,5 @@
 simulate_demand <-
-function(sim,afcast,nyears=length(sim$hhfit)/seasondays/periods,periods=48)
+function(sim,afcast, nyears=length(sim$hhfit)/seasondays/periods, periods=48)
 {
 	n <- nyears*seasondays*periods
 
