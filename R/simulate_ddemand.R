@@ -1,6 +1,8 @@
 simulate_ddemand <-
-function(model, hdata, simyears=1000, delta=5,periods=48)
+function(model, hdata, simyears=1000, delta=5)
 {
+	periods <- length(unique(hdata$timeofday))
+
 	# Generate nsim years of adjusted log demand
 	nh <- nrow(hdata)
 	nhdata <- trunc(nrow(hdata)/seasondays/periods + 0.9999)
@@ -9,7 +11,7 @@ function(model, hdata, simyears=1000, delta=5,periods=48)
 	hfit.sim <- hres.sim <- ores <- temp.sim <- matrix(NA,nyears,seasondays*periods)
 	for(i in 1:nsim){
 		# Simulated adjusted log demand
-		tmp <- newpredict(model,hdata,blocklength=35,delta=delta)
+		tmp <- newpredict(model,hdata,blocklength=35,delta=delta,periods=periods)
 		hfit <- tmp$hfit
 		hres <- tmp$hres
 		simtemp <- tmp$simtemp
@@ -31,7 +33,7 @@ function(model, hdata, simyears=1000, delta=5,periods=48)
 		hres.sim[(i-1)*nhdata + 1:nhdata,] <- matrix(hres,nrow=nhdata,ncol=seasondays*periods,byrow=TRUE)
 
 		# simple seasonal bootstrap for offset demand: season.bootstrap()
-		ores[(i-1)*nhdata + 1:nhdata,] <- matrix(season.bootstrap(hdata$doffset[20000:nh],20,n=nhdata*seasondays*periods),
+		ores[(i-1)*nhdata + 1:nhdata,] <- matrix(season.bootstrap(hdata$doffset[20000:nh],20,n=nhdata*seasondays*periods,periods),
 			nrow=nhdata,ncol=seasondays*periods,byrow=TRUE)    
 	}
    

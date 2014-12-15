@@ -1,4 +1,4 @@
-export(demand_model,simulate_ddemand,simulate_demand)
+export(demand_model,simulate_ddemand,simulate_demand,maketemps)
 
 importFrom(splines,ns)
 importFrom(forecast,msts)

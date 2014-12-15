@@ -7,7 +7,7 @@ Simulate the electricity demand for the next season
 Simulate the half-hourly/hourly, seasonal peak electricity demand for the next season
 }
 \usage{
-simulate_demand(sim, afcast, nyears = length(sim$hhfit)/seasondays/periods, periods = 48)
+simulate_demand(sim, afcast, nyears = length(sim$hhfit)/seasondays/48, periods = 48)
 }
 \arguments{
   \item{sim}{
@@ -40,7 +40,7 @@ Rob J. Hyndman and Shu Fan
 \seealso{
 \code{\link{demand_model}}, 
 \code{\link{simulate_ddemand}},
-\code{\link{MEFMLT-package}} for examples.
+\code{\link{MEFM-package}} for examples.
 }
 
 \keyword{Electricity demand model}

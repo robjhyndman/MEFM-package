@@ -13,14 +13,14 @@ function(x,y,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
 		xtemp <- x[,"temp1",drop=FALSE]  # one-column dataframe, use drop=FALSE to avoid coercing to vector
 		# add in the residuals
 		xtemp <- data.frame(temp1=x$temp1,hhres=y)
-		newtemp <- data.frame(temp1=temp_bootstrap(xtemp,m,delta))
+		newtemp <- data.frame(temp1=temp_bootstrap(xtemp,m,delta,periods))
 	}
 	if (temp_sites == 2)
 	{
 		# add in the residuals
 		xtemp <- data.frame(temp1=x$temp1,temp2=x$temp2,hhres=y)
 	
-		newtemp <- temp_bootstrap(xtemp,m,delta=delta)
+		newtemp <- temp_bootstrap(xtemp,m,delta=delta,periods)
 	}
 	#############################
    
@@ -40,9 +40,9 @@ function(x,y,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
 		nsamp <- trunc(n/nn) + 1
 		for(i in 1:nsamp)
 			if (temp_sites == 1)
-				newtemp <- rbind(newtemp,data.frame(temp1=temp_bootstrap(xtemp,m,delta=delta)[1:nn,]))
+				newtemp <- rbind(newtemp,data.frame(temp1=temp_bootstrap(xtemp,m,delta=delta,periods)[1:nn,]))
 			else
-				newtemp <- rbind(newtemp,temp_bootstrap(xtemp,m,delta=delta)[1:nn,])
+				newtemp <- rbind(newtemp,temp_bootstrap(xtemp,m,delta=delta,periods)[1:nn,])
 	}
 
 	# Return result as a time series

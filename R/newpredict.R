@@ -8,7 +8,7 @@ function(model,hdata,blocklength,allperiods=TRUE,delta,periods=48)
 
 		#############################################################################################
 		# simulate temperature and residual simultaneously
-		newsa<- simulate.temp(hdata,model$hhres,n=nrow(hdata)+seasondays*periods,m=20,temp_sites,delta=delta)
+		newsa<- simulate.temp(hdata,model$hhres,n=nrow(hdata)+seasondays*periods,m=20,temp_sites,delta=delta,periods=periods)
        
 		hres <- newsa[,"hhres"]
 		hres <- hres[-(1:(seasondays*periods))]
@@ -20,7 +20,7 @@ function(model,hdata,blocklength,allperiods=TRUE,delta,periods=48)
 		simtemp <- simtemp[-(1:(seasondays*periods))]
 		#####################################################################
 
-		newsa <- maketemps(newsa,temp_sites)
+		newsa <- maketemps(newsa,temp_sites,periods=periods)
 		# remove the first seasondays*periods (due to the NAs in the first several days)
 		newsa <- newsa[-(1:(seasondays*periods)),]
 		# Patch in other variables
@@ -42,7 +42,7 @@ function(model,hdata,blocklength,allperiods=TRUE,delta,periods=48)
 		hfits <- c(t(hfits))
 
 	# Half hourly residuals (done with the temperature simulation)
-	hres <- simulate.res(hdata,model,blocklength,hfits) # still use the original residual simulation
+	hres <- simulate.res(hdata,model,blocklength,hfits,periods=periods) # still use the original residual simulation
 
 	return(list(hfit=hfits, hres=hres, simtemp=simtemp))
 }

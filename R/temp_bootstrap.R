@@ -1,4 +1,5 @@
-temp_bootstrap <- function(x,m,delta=5,periods=48)
+temp_bootstrap <-
+function(x,m,delta=5,periods=48)
 {
 	x <- as.matrix(x)
 	n <- nrow(x)
@@ -72,7 +73,7 @@ temp_bootstrap <- function(x,m,delta=5,periods=48)
 	# Create new x matrix
 	# Need to modify this so the noise is added to variable blocks instead of fixed blocks.
 	newx <- as.matrix(x[newindex,])
-	bmax <- blockstat(newx[,1],m,fill=FALSE)
+	bmax <- blockstat(newx[,1],m,fill=FALSE,periods=periods)
 	noise <- 0.4*pmax(bmax-42,0)*rnorm(length(bmax),0,1) + rnorm(length(bmax),0,0.2)
 	noise <- matrix(rep(noise,rep(m*periods,length(noise)))[1:n],nrow=n,ncol=ncol(newx))
 	newx <- newx + noise

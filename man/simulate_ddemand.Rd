@@ -7,7 +7,7 @@ Temperature and demand Simulation
 Simulate the half-hourly/hourly temperature and demand
 }
 \usage{
-simulate_ddemand(model, hdata, simyears = 1000, delta = 5, periods = 48)
+simulate_ddemand(model, hdata, simyears = 1000, delta = 5)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,9 +22,6 @@ The length of years of simulation
 }
   \item{delta}{
 The value of blockdays offset limit for bootstrap
-}
-  \item{periods}{
-The periods within a day, 48 for half-hourly, 24 for hourly
 }
 }
 \details{
@@ -47,7 +44,7 @@ Rob J Hyndman and Shu Fan
 \code{\link{demand_model}},
 \code{\link{simulate_demand}},
 \code{\link{sa}},
-\code{\link{MEFMLT-package}} for examples.
+\code{\link{MEFM-package}} for examples.
 }
 
 \keyword{Electricity demand model}

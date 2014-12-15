@@ -1,8 +1,9 @@
 demand_model <-
-function(hhdata,adata,hhoptformula,aoptformula,periods=48)
+function(hhdata,adata,hhoptformula,aoptformula)
 {
 	hhmodels <- list()
-   
+	periods <- length(unique(hhdata$timeofday))
+	
 	# half-hourly model
 	for(i in 1:periods)
 		hhmodels[[i]] <- lm(hhoptformula[[i]],data=hhdata[hhdata$timeofday==(i-1),],na.action=na.exclude)
