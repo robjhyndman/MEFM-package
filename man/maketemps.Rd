@@ -20,8 +20,6 @@ The number of weather stations, select between 1 and 2
 The periods within a day, choose between 48 (half-hourly data) and 24 (hourly data)
 }
 }
-\details{
-}
 \value{
 The complete data frame that can be used for model estimation.
 }
