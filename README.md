@@ -15,7 +15,7 @@ You can install the latest version from
 ```s
 # install.packages("devtools")
 library(devtools)
-install_github("MEFM-package", "robjhyndman") 
+install_github("robjhyndman/MEFM-package") 
 ```
 
 ## Usage
