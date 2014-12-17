@@ -1,30 +1,28 @@
-\name{MEFM-package}
-\alias{MEFM-package}
-\alias{MEFM}
-\docType{package}
-\title{
-Monash Electricity Forecasting Model
-}
-\description{
-This package includes a set of tools for implementing the Monash Electricity Forecasting Model based on the paper by Hyndman and Fan (2010).
+#MEFM package
 
-The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations; seasonal demographic and economic data; public holiday data. The formats of the required data are described in the help files.
-}
-\author{
-Rob J Hyndman and Shu Fan. 
+The R package *MEFM* includes a set of tools for implementing the Monash Electricity Forecasting Model based on the paper by [Hyndman and Fan (2010)](http://robjhyndman.com/papers/peak-electricity-demand/).
 
-Maintainer: Shu Fan <Shu.Fan@monash.edu>
-}
-\references{
-R. J. Hyndman and S. Fan (2010) "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, 25(2), 1142--1153.
-\url{http://robjhyndman.com/papers/peak-electricity-demand/}
+The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations;
+seasonal demographical and economical data; public holiday data. The formats of the required data are described in the help files.
 
-R. J. Hyndman and S. Fan (2014) "Monash Electricity Forecasting Model" Version 2014.1. 
-\url{http://robjhyndman.com/working-papers/mefm/}
-}
+Some documentation of the underlying model is provided at [http://robjhyndman.com/working-papers/mefm/](http://robjhyndman.com/working-papers/mefm/)
 
-\examples{
-# formula for half-hourly model, to be given by the user
+## Installation
+
+You can install the latest version from
+[Github](https://github.com/robjhyndman/MEFM-package)
+
+```s
+# install.packages("devtools")
+library(devtools)
+install_github("MEFM-package", "robjhyndman") 
+```
+
+## Usage
+
+```s
+library(MEFM)
+
 formula.hh <- list()
 for(i in 1:48)
   formula.hh[[i]] = as.formula(log(ddemand) ~ ns(temp, df=2) + day 
@@ -58,8 +56,8 @@ demand <- simulate_demand(simdemand, afcast)
 # Illustrate the results
 plot(density(demand$annmax, bw="SJ"),
   main="Density of seasonal maximum demand", xlab="Demand")
+```
 
-}
-\keyword{package}
+## License
 
-
+This package is free and open source software, licensed under GPL (>= 2).
