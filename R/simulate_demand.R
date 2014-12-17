@@ -17,7 +17,7 @@ function(sim,afcast,nyears=length(sim$hhfit)/seasondays/48,periods=48)
 	dem <- exp(total[1:n]) * afit
    
 	annmax <- blockstat(dem,seasondays,max,fill=FALSE,periods=periods)
-	dem <- matrix(dem,nrow=seasondays*periods,byrow=F)
+	dem <- matrix(dem,nrow=seasondays*periods,byrow=FALSE)
 	
-	return(list(demand=ts(dem,f=periods,s=1),annmax=annmax))
+	return(list(demand=ts(dem,frequency=periods,start=1),annmax=annmax))
 }
