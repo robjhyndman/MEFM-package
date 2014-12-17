@@ -37,6 +37,6 @@ function(model, hdata, simyears=1000, delta=5)
 			nrow=nhdata,ncol=seasondays*periods,byrow=TRUE)    
 	}
    
-	return(structure(list(hhfit=c(t(hfit.sim[1:nyears,])),hhres=c(t(hres.sim[1:nyears,])),
-		ores=c(t(ores[1:nyears,])),a=model$a),class="simdemand"))
+	return(structure(list(hhfit=c(t(hfit.sim[1:simyears,])),hhres=c(t(hres.sim[1:simyears,])),
+		ores=c(t(ores[1:simyears,])),a=model$a),class="simdemand"))
 }
