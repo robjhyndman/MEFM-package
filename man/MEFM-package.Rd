@@ -1,5 +1,6 @@
 \name{MEFM-package}
 \alias{MEFM-package}
+\alias{MEFM}
 \docType{package}
 \title{
 Monash Electricity Forecasting Model
@@ -7,7 +8,7 @@ Monash Electricity Forecasting Model
 \description{
 This package includes a set of tools for electricity demand model estimation, temperature simulation and long-term peak electricity demand forecasting based on Hyndman and Fan (2010).
 
-The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations; seasonal demographical and economical data; public holiday data. The formats of the required data are described in the help files.
+The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations; seasonal demographic and economic data; public holiday data. The formats of the required data are described in the help files.
 }
 \author{
 Rob J Hyndman and Shu Fan. 
