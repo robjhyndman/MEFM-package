@@ -42,7 +42,7 @@ function(model,hdata,blocklength,allperiods=TRUE,delta,periods=48)
 		hfits <- c(t(hfits))
 
 	# Half hourly residuals (done with the temperature simulation)
-	hres <- simulate.res(hdata,model,blocklength,hfits,periods=periods) # still use the original residual simulation
+	hres <- simulate_res(hdata,model,blocklength,hfits,periods=periods) # still use the original residual simulation
 
 	return(list(hfit=hfits, hres=hres, simtemp=simtemp))
 }
