@@ -1,4 +1,4 @@
-export(demand_model,simulate_ddemand,simulate_demand,maketemps,blockstat,simulate.temp)
+export(demand_model,simulate_ddemand,simulate_demand,maketemps,blockstat,simulate.temp,season.bootstrap)
 
 importFrom(splines,ns)
 importFrom(forecast,msts)
