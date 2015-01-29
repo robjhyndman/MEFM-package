@@ -1,4 +1,4 @@
-simulate.res <-
+simulate_res <-
 function(hdata,model,k,hfits,periods=48)
 {
 	###########################################################

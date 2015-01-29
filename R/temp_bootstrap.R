@@ -1,4 +1,5 @@
-temp_bootstrap <-
+# Variable length double seasonal bootstrap
+temp_bootstrap <- 
 function(x,m,delta=5,periods=48)
 {
 	x <- as.matrix(x)
@@ -53,7 +54,7 @@ function(x,m,delta=5,periods=48)
 	# Fix years with partial observations
 	lastobs <- (n/seasondays/periods - trunc(n/seasondays/periods)) * periods * seasondays - (m+delta*2) * periods
 	j <- (syear==years & blockstart>lastobs)
-	syear[j] <- sample(1:(years-1),sum(j),replace=TRUE) # aviod to sample data from the blank part of the last year
+	syear[j] <- sample(1:(years-1),sum(j),replace=TRUE) # avoid to sample data from the blank part of the last year
 
 	# Sample from each block
 	newindex <- numeric(seasondays*periods*years)
@@ -65,7 +66,8 @@ function(x,m,delta=5,periods=48)
 	newindex <- newindex[!is.na(newindex)]
 	if(length(newindex) >= n)     #n <- nrow(x)
 		newindex <- newindex[1:n]
-	else{
+	else
+	{
 		warning("Insufficient data generated")
 		n <- length(newindex)
 	}
@@ -73,11 +75,12 @@ function(x,m,delta=5,periods=48)
 	# Create new x matrix
 	# Need to modify this so the noise is added to variable blocks instead of fixed blocks.
 	newx <- as.matrix(x[newindex,])
-	bmax <- blockstat(newx[,1],m,fill=FALSE,periods=periods)
+	bmax <- blockstat(newx[,1],m,fill=FALSE)
 	noise <- 0.4*pmax(bmax-42,0)*rnorm(length(bmax),0,1) + rnorm(length(bmax),0,0.2)
 	noise <- matrix(rep(noise,rep(m*periods,length(noise)))[1:n],nrow=n,ncol=ncol(newx))
+	
 	newx <- newx + noise
 
 	# Return final simulated data
-	return(newx)
+	return(list(newx=newx,newindex=newindex))	# output the simulation index for use in the PV simulation
 }

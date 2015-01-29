@@ -13,10 +13,13 @@ function(model, hdata, simyears=1000, delta=5)
 		# Simulated adjusted log demand
 		tmp <- newpredict(model,hdata,blocklength=35,delta=delta,periods=periods)
 		hfit <- tmp$hfit
-		hres <- tmp$hres
+		#hres <- tmp$hres
 		simtemp <- tmp$simtemp
- 
-		# fix partial data at the end if any, copy and paste the corresponding part of the last year
+		
+		# Half hourly residuals (done with the temperature simulation)
+		hres <- simulate_res(hdata,model,35,hfit,periods=periods) # still use the original residual simulation
+
+ 		# fix partial data at the end if any, copy and paste the corresponding part of the last year
 		if((nhdata*seasondays*periods-nh)!=0){
 			hfit <- c(hfit,hfit[(length(hfit)-seasondays*periods) + 1:(nhdata*seasondays*periods-nh)])
 			hres <- c(hres,hres[(length(hres)-seasondays*periods) + 1:(nhdata*seasondays*periods-nh)])
