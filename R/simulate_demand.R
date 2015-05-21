@@ -11,11 +11,13 @@ function(sim,afcast,nyears=length(sim$hhfit)/seasondays/48,periods=48)
 
 	##############################################################
 	# total below should equal to sim$demand
-	total <- sim$hhfit+sim$hhres
-   
+	total <- c(sim$hhfit)+c(sim$hhres)
+	
 	# use log for both annual and half-hourly sim
 	dem <- exp(total[1:n]) * afit
    
 	annmax <- blockstat(dem,seasondays,max,fill=FALSE,periods=periods)
-	return(list(demand=ts(dem,frequency=seasondays*periods,start=1),annmax=annmax))
+	dem <- matrix(dem,nrow=seasondays*periods,byrow=FALSE)
+	
+	return(list(demand=ts(dem,frequency=periods,start=1),annmax=annmax))
 }

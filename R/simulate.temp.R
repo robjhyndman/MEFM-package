@@ -1,5 +1,5 @@
 simulate.temp <-
-function(x,y,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
+function(x,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
 {
 	if(m > 30)
 		stop("Blockdays too large")
@@ -12,15 +12,20 @@ function(x,y,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
 	{
 		xtemp <- x[,"temp1",drop=FALSE]  # one-column dataframe, use drop=FALSE to avoid coercing to vector
 		# add in the residuals
-		xtemp <- data.frame(temp1=x$temp1,hhres=y)
-		newtemp <- data.frame(temp1=temp_bootstrap(xtemp,m,delta,periods))
+       xtemp <- data.frame(temp1=x$temp1)
+
+       tmp<- temp_bootstrap(xtemp,m,delta,periods)
+	   newtemp <- data.frame(temp1=tmp$newx)
+	   newindex <- tmp$newindex
 	}
 	if (temp_sites == 2)
 	{
 		# add in the residuals
-		xtemp <- data.frame(temp1=x$temp1,temp2=x$temp2,hhres=y)
+		xtemp <- data.frame(temp1=x$temp1,temp2=x$temp2)
 	
-		newtemp <- temp_bootstrap(xtemp,m,delta=delta,periods)
+       tmp <- temp_bootstrap(xtemp,m,delta=delta,periods)
+	   newtemp <- tmp$newx
+	   newindex <- tmp$newindex
 	}
 	#############################
    
@@ -38,17 +43,28 @@ function(x,y,n=nrow(x),m=9,temp_sites=2,delta=5,periods=48)
 				newtemp <- newtemp[1:nn,]
 		}
 		nsamp <- trunc(n/nn) + 1
-		for(i in 1:nsamp)
-			if (temp_sites == 1)
-				newtemp <- rbind(newtemp,data.frame(temp1=temp_bootstrap(xtemp,m,delta=delta,periods)[1:nn,]))
-			else
-				newtemp <- rbind(newtemp,temp_bootstrap(xtemp,m,delta=delta,periods)[1:nn,])
+		for(i in 1:nsamp){
+			if (temp_sites == 1){
+				tmp <- temp_bootstrap(xtemp,m,delta=delta)
+				newtemp <- rbind(newtemp,data.frame(temp1=tmp$newx[1:nn,]))
+				newindex <- c(newindex,tmp$newindex[1:nn])
+			} 
+			else{
+				tmp <- temp_bootstrap(xtemp,m,delta=delta)
+				newtemp <- rbind(newtemp,tmp$newx[1:nn,])
+				newindex <- c(newindex,tmp$newindex[1:nn])
+			}
+		}
 	}
 
 	# Return result as a time series
-	if (temp_sites == 1)
+	if (temp_sites == 1){
 		newtemp <- ts(data.frame(temp1=newtemp[1:n,]),start=1,frequency=seasondays*periods)
-	else
+		newindex <- newindex[1:n]
+	}	
+	else{
 		newtemp <- ts(newtemp[1:n,],start=1,frequency=seasondays*periods)
-	return(newtemp)
+		newindex <- newindex[1:n]
+	}
+	return(list(newtemp=newtemp,newindex=newindex))	# output the simulation index for use in the PV simulation
 }

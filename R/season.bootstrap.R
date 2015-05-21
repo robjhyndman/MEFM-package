@@ -1,5 +1,5 @@
 season.bootstrap <-
-function(x,m,n=length(x),periods)
+function(x,m,n=length(x),periods=48)
 {
 	tmp <- season_bootstrap(x,m,periods)
 	if(n > length(tmp)){
