@@ -1,5 +1,6 @@
 \name{MEFM-package}
 \alias{MEFM-package}
+\alias{MEFM}
 \docType{package}
 \title{
 Monash Electricity Forecasting Model
