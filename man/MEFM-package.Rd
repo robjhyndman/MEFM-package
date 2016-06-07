@@ -13,7 +13,7 @@ The package requires the following data as input: half-hourly/hourly electricity
 \author{
 Rob J Hyndman and Shu Fan. 
 
-Maintainer: Shu Fan <Shu.Fan@monash.edu>
+Maintainer: Rob J. Hyndman <Rob.Hyndman@monash.edu>; Shu Fan <Sfan.monash@gmail.com>
 }
 \references{
 R. J. Hyndman and S. Fan (2010) "Density Forecasting for Long-term Peak Electricity Demand", IEEE Trans. Power Systems, 25(2), 1142--1153.
@@ -35,10 +35,10 @@ for(i in 1:48)
     + ns(day3temp, df=2) + ns(prevdtemp1, 3) + ns(prevdtemp2, 3) 
     + ns(prevdtemp3, 3) + ns(day1dtemp, 3))
 
-# formula for annual model, to be given by the user
+# Formula for annual model, to be given by the user
 formula.a <- as.formula(anndemand ~ gsp + ddays + resiprice)
 
-# create lagged temperature variables
+# Create lagged temperature variables
 sa <- maketemps(sa,2,48)
 
 sa.model <- demand_model(sa, sa.econ, formula.hh, formula.a)
@@ -49,7 +49,7 @@ summary(sa.model$hh[[33]])
 # Simulate future normalized half-hourly data
 simdemand <- simulate_ddemand(sa.model, sa, simyears=10)
 
-# seasonal economic and weather forecast, to be given by user
+# Seasonal economic and weather forecast, to be given by user
 afcast <- data.frame(pop=1694, gsp=22573, resiprice=34.65, ddays=642)
 
 # Simulate half-hourly data

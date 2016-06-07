@@ -9,7 +9,6 @@ Simulate the half-hourly/hourly temperature and demand
 \usage{
 simulate_ddemand(model, hdata, simyears = 1000, delta = 5)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{model}{
 The demand models
