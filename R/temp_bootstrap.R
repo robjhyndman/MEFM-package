@@ -77,8 +77,9 @@ function(x,m,delta=5,periods=48)
 	newx <- as.matrix(x[newindex,])
 	bmax <- blockstat(newx[,1],m,fill=FALSE)
 	noise <- 0.4*pmax(bmax-42,0)*rnorm(length(bmax),0,1) + rnorm(length(bmax),0,0.2)
-	noise <- matrix(rep(noise,rep(m*periods,length(noise)))[1:n],nrow=n,ncol=ncol(newx))
-	
+	#noise <- matrix(rep(noise,rep(m*periods,length(noise)))[1:n],nrow=n,ncol=ncol(newx))
+	noise <- matrix(rep(rep(noise,rep(m*periods,length(noise))), trunc(n/10000))[1:n],nrow=n,ncol=ncol(newx))
+
 	newx <- newx + noise
 
 	# Return final simulated data
