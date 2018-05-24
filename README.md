@@ -5,7 +5,7 @@ The R package *MEFM* includes a set of tools for implementing the Monash Electri
 The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations;
 seasonal demographical and economical data; public holiday data. The formats of the required data are described in the help files.
 
-Some documentation of the underlying model is provided at [http://robjhyndman.com/working-papers/mefm/](http://robjhyndman.com/working-papers/mefm/)
+Some documentation of the underlying model is provided at [http://robjhyndman.com/working-papers/mefm/](http://robjhyndman.com/publications/mefm/)
 
 ## Installation
 
