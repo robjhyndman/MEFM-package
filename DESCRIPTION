@@ -6,9 +6,7 @@ Date: 2016-06-01
 Author: Rob J. Hyndman <Rob.Hyndman@monash.edu>, Shu Fan <Sfan.monash@gmail.com>
 Maintainer: Rob J. Hyndman <Rob.Hyndman@monash.edu>, Shu Fan <Sfan.monash@gmail.com>
 Depends: R(>= 2.14.0), forecast, splines
-Description: This package includes a set of tools for implementing the Monash Electricity Forecasting Model for electricity demand.
-			The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations;
-			seasonal demographical and economical data; public holiday data. The formats of the required data are described in the help files.
+Description: This package includes a set of tools for implementing the Monash Electricity Forecasting Model for electricity demand. The package requires the following data as input: half-hourly/hourly electricity demands; half-hourly/hourly temperatures at one or two locations; seasonal demographical and economical data; public holiday data. The formats of the required data are described in the help files.
 License: GPL (>=2)
 LazyData: yes
 LazyLoad: yes
