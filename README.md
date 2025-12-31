@@ -1,4 +1,4 @@
-#MEFM package
+# MEFM package
 
 The R package *MEFM* includes a set of tools for implementing the Monash Electricity Forecasting Model based on the paper by [Hyndman and Fan (2010)](http://robjhyndman.com/papers/peak-electricity-demand/).
 
@@ -12,7 +12,7 @@ Some documentation of the underlying model is provided at [robjhyndman.com/publi
 You can install the latest version from
 [Github](https://github.com/robjhyndman/MEFM-package)
 
-```s
+```r
 # install.packages("devtools")
 library(devtools)
 install_github("robjhyndman/MEFM-package") 
@@ -20,11 +20,12 @@ install_github("robjhyndman/MEFM-package")
 
 ## Usage
 
-```s
+```r
 library(MEFM)
 
+# formula for the half-hourly model
 formula.hh <- list()
-for(i in 1:48)
+for(i in 1:48) {
   formula.hh[[i]] = as.formula(log(ddemand) ~ ns(temp, df=2) + day 
     + holiday + ns(timeofyear, 9) + ns(avetemp, 3) + ns(dtemp, 3) + ns(lastmin, 3) 
     + ns(prevtemp1, df=2) + ns(prevtemp2, df=2) 
@@ -32,8 +33,8 @@ for(i in 1:48)
     + ns(day1temp, df=2) + ns(day2temp, df=2) 
     + ns(day3temp, df=2) + ns(prevdtemp1, 3) + ns(prevdtemp2, 3) 
     + ns(prevdtemp3, 3) + ns(day1dtemp, 3))
-
-# formula for annual model, to be given by the user
+}
+# formula for the annual model
 formula.a <- as.formula(anndemand ~ gsp + ddays + resiprice)
 
 # create lagged temperature variables
